@@ -1,7 +1,5 @@
 #include <stdio.h>
-int isPrime (int n);
-int isStrong (int n);
-
+#include "NumClass.h"
 
 int main()
 {
