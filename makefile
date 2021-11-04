@@ -6,13 +6,17 @@ LibRec =  advancedClassificationRecursion.o basicClassification.o
 .PHONY: all clean
  
 all: loops recursives loopd recursived mains maindloop maindrec
-loops: $(LibLoop)
+loops: libclassLoops.a
+libclassLoops.a:$(LibLoop)
 	$(AR) libclassLoops.a $(LibLoop)
-recursives: $(LibRec)
+recursives:libclassrec.a
+libclassrec.a: $(LibRec)
 	$(AR) libclassrec.a $(LibRec)
-loopd: $(LibLoop)
+loopd:libclassLoops.so
+libclassLoops.so: $(LibLoop)
 	$(CC) -shared -o libclassLoops.so $(LibLoop) -lm  
-recursived: $(LibRec)
+recursived: libclassrec.so
+libclassrec.so: $(LibRec)
 	$(CC) -shared -o libclassrec.so $(LibRec)  -lm 
 mains: main.o libclassrec.a
 	$(CC) $(FLAG) -o mains main.o libclassrec.a -lm 
@@ -30,4 +34,3 @@ basicClassification.o: basicClassification.c NumClass.h
 	$(CC) $(FLAG) -c basicClassification.c -lm 
 advancedClassificationRecursion.o: advancedClassificationRecursion.c NumClass.h
 	$(CC) $(FLAG) -c advancedClassificationRecursion.c -lm
-
