@@ -5,13 +5,15 @@
 
 int isArmstrong(int num)
 {
+    if(num<=0) {return 0;}
     double ndigit = numDigit(num);
-    if(num==isArm(num, ndigit))
+    int sum = isArm(num, ndigit);
+    if(num==sum)
     {
-        return 0;
+        return 1;
 
     }
-    return 1;
+    return 0;
 }
 
 int isArm(int num, int p)
@@ -36,23 +38,30 @@ int numDigit(int num)
 
 int isPalindrom(int num)
 {
-    int nDigit = numDigit(num); 
-    if(nDigit==1 || nDigit==0)
+    if(num<=0)
     {
         return 0;
     }
-    double firstCh = (num / pow(10 ,nDigit-1));
-    if(num%10!= (int)firstCh)
+    int rev = reversepal(num);
+    while(num!=0)
     {
-        return 1;
+        if(num%10!=rev%10)
+        {
+            return 0;
+        }
+        num= num/10;
+        rev = rev/10;
     }
-    num-= ((int)(firstCh*pow(10, nDigit-1)));
-    num%=10;
-    return isPalindrom(num);
+    return 1;
+    
 }
-
-int main()
+int reversepal(int num)
 {
-    int a = isPalindrom(15551);
-    printf("%d", a);
+    int temp =0;
+    do
+    {
+        temp = temp*10 + num%10;
+        num = num/10;
+    }while(num!=0);
+    return temp;
 }

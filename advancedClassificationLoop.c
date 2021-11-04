@@ -2,7 +2,7 @@
 #include <math.h>
 #include "NumClass.h"
 
-int ispalindrom(int num)
+int isPalindrom(int num)
 {
     int n= num;
     int reverseNum=0;
@@ -13,9 +13,9 @@ int ispalindrom(int num)
     }
     if(num!=reverseNum)
     {
-        return 1;
+        return 0;
     }
-    return 0;
+    return 1;
 }
 int numDigit(int num)
 {
@@ -42,13 +42,7 @@ int isArmstrong(int num)
         }
     if(((int)sum)==num)
     {
-        return 0;
+        return 1;
     }
-    return 1;
-}
-
-int main()
-{
-    int a = isArmstrong(11);
-printf("%d", a );
+    return 0;
 }
