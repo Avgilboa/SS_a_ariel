@@ -19,7 +19,6 @@ int main()
     printPrime(a,b);
     printf("The Strong numbers are:");
     printStrong(a,b);
-    printf("\n");
 return 0;
 }
 
